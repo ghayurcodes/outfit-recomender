@@ -125,9 +125,12 @@ select {
   flex-direction: column;
 }
 .wardrobe-item.active {
-  outline: 2px solid rgba(255, 255, 255, 0.247);
+  outline: 2px solid rgba(34, 245, 69, 0.692);
 }
 
+.chkbox{
+  display: none;
+}
 .wardrobe-item .name {
   font-weight: 600;
   font-size: 13px;

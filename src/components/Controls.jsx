@@ -26,7 +26,7 @@ export default function Controls({ weather, setWeather, eventType, setEventType,
         <div className="wardrobe-grid">
           {WARDROBE.map(item=>(
             <label key={item.id} className={`wardrobe-item ${selectedIds.has(item.id)?'active':''}`}>
-              <input type="checkbox" checked={selectedIds.has(item.id)} onChange={()=>toggleItem(item.id)} />
+              <input type="checkbox" checked={selectedIds.has(item.id)} onChange={()=>toggleItem(item.id)}  className="chkbox"/>
               <img src={item.img} alt={item.name} />
               <div className="meta">
                 <div className="name">{item.name}</div>
