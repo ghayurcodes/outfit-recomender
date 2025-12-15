@@ -29,7 +29,7 @@ export default function ResultsPanel({ scored, best, onChooseBest }){
 
       <h4 style={{marginTop:18}}>Top Results</h4>
       <div className="top-list">
-        {scored.splice(0,8).map((o,idx)=>(<OutfitCard key={idx} outfit={o} onChoose={()=>onChooseBest(o)} />))}
+        {scored.slice(0,8).map((o,idx)=>(<OutfitCard key={idx} outfit={o} onChoose={()=>onChooseBest(o)} />))}
       </div>
     </div>
   );

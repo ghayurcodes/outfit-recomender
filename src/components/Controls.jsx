@@ -21,6 +21,9 @@ export default function Controls({ weather, setWeather, eventType, setEventType,
         </select>
       </div>
 
+      <button className="run-btn" onClick={run}>Find Best Outfit</button>
+
+
       <div className="wardrobe-chooser">
         <div className="wardrobe-title">Available Clothes</div>
         <div className="wardrobe-grid">
@@ -37,7 +40,6 @@ export default function Controls({ weather, setWeather, eventType, setEventType,
         </div>
       </div>
 
-      <button className="run-btn" onClick={run}>Find Best Outfit</button>
     </div>
   );
 }

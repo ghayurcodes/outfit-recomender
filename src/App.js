@@ -13,7 +13,7 @@ export default function App() {
   const [selectedIds, setSelectedIds] = useState(new Set(WARDROBE.map(i => i.id)));
   const [scored, setScored] = useState([]);
   const [best, setBest] = useState(null);
-  const [stats, setStats] = useState({ searchTime: 0, found: 0 });
+  const [stats, setStats] = useState({ searchTime: 0, topScore: 0, avgTop5: 0 });
 
   const toggleItem = id => { setSelectedIds(prev => { const next = new Set(prev); if (next.has(id)) next.delete(id); else next.add(id); return next; }); };
 
@@ -22,10 +22,16 @@ export default function App() {
     const t0 = performance.now();
     const results = generateOutfits(available, weather, eventType, 3000);
     const t1 = performance.now();
+
     const ranked = rankOutfits(results, weather, eventType);
+    const topScore = ranked[0]?.score ?? 0;
+    const top5 = ranked.slice(0, 5);
+    const avgTop5 = top5.length ? Math.round(avg(top5.map(o => o.score)) * 10) / 10 : 0;
+    
     setScored(ranked);
     setBest(ranked[0] || null);
-    setStats({ searchTime: Math.round(t1 - t0), found: results.length });
+    setStats({
+      searchTime: Math.round(t1 - t0), found: results.length, topScore, avgTop5 });
   };
 
   const chooseBest = o => { alert("You picked: " + o.items.map(i => i.name).join(' + ')); };
@@ -49,7 +55,10 @@ export default function App() {
               <div className="footer-stats">
                 <div>Items available: <strong>{initial.count}</strong></div>
                 <div>Search time: <strong>{stats.searchTime}ms</strong></div>
-                <div>Found: <strong>{stats.found}</strong></div>
+                  <div>Found: <strong>{stats.found}</strong></div>
+                  <div>Top score: <strong>{stats.topScore}</strong></div>
+                  <div>Avg Top-5: <strong>{stats.avgTop5}</strong></div>
+
               </div>
             </div>
           </div>
