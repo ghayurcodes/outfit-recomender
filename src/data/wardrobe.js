@@ -33,7 +33,7 @@ export const WARDROBE = [
 
   { id: "b4", cat: "bottom", name: "Ripped Jeans", color: "blue", style: ["casual", "street"], warmth: "medium", formality: 0, img: "https://i5.walmartimages.com/seo/Women-High-Waisted-Baggy-Ripped-Jeans-Boyfriend-Fashion-Large-Denim-Baggy-Blue-Jeans-for-Girls_2122c18e-fca8-42c1-9cc6-b7cb8cf8f14b.f1ee96417a4ff3418bf315f17398787e.jpeg" },
 
-  { id: "b5", cat: "bottom", name: "Cargo Pants", color: "olive", style: ["casual", "street", "esthetic"], warmth: "medium", formality: 0, img: "https://saintjones.in/cdn/shop/files/BAGGY_OLIVE_GREEN_CARGO_-_St.Jones-3828864_1800x1800.jpg?v=1727175752" },
+  { id: "b5", cat: "bottom", name: "Cargo Pants", color: "olive", style: ["casual", "street", "esthetic", "outdoor"], warmth: "medium", formality: 0, img: "https://saintjones.in/cdn/shop/files/BAGGY_OLIVE_GREEN_CARGO_-_St.Jones-3828864_1800x1800.jpg?v=1727175752" },
 
   { id: "b6", cat: "bottom", name: "Track Pants", color: "black", style: ["sport", "casual"], warmth: "light", formality: 0, img: "https://iciw.centracdn.net/client/dynamic/images/10906_19c49fa208-12012-001-1-1350x0.jpg" },
 
@@ -54,11 +54,11 @@ export const WARDROBE = [
 
   { id: "s5", cat: "shoes", name: "High-top Sneakers", color: "black", style: ["casual", "street", "esthetic"], warmth: "light", formality: 0, img: "https://nothingnew.com/cdn/shop/files/1024x1024-Men-HighTop-JetBlack-Construction_1080x1080.jpg?v=1614291278" },
 
-  { id: "s6", cat: "shoes", name: "Football Cleats", color: "black", style: ["sport"], warmth: "medium", formality: 0, img: "https://m.media-amazon.com/images/I/412+ltXkdDL._SL500_.jpg" },
+  { id: "s6", cat: "shoes", name: "Football Cleats", color: "black", style: ["sport", "outdoor"], warmth: "light", formality: 0, img: "https://m.media-amazon.com/images/I/412+ltXkdDL._SL500_.jpg" },
 
   // Added variety
   { id: "s7", cat: "shoes", name: "Black Loafers", color: "black", style: ["smart", "classic"], warmth: "medium", formality: 2, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJdNt_SpnjgHz0BwqbZtYwA7tAqPx-w-c3w&s" },
-  { id: "s8", cat: "shoes", name: "Slides / Sandals", color: "black", style: ["casual", "sport"], warmth: "light", formality: 0, img: "https://adoro.com.pk/cdn/shop/files/Signature_Buckle_Slides-Black.jpg?v=1756703529" },
+  { id: "s8", cat: "shoes", name: "Slides / Sandals", color: "black", style: ["casual", "sport", "street", "outdoor"], warmth: "light", formality: 0, img: "https://adoro.com.pk/cdn/shop/files/Signature_Buckle_Slides-Black.jpg?v=1756703529" },
 
   // -------------------
   // Outer (optional)
@@ -69,7 +69,7 @@ export const WARDROBE = [
 
   { id: "o3", cat: "outer", name: "Bomber Jacket", color: "black", style: ["casual", "street", "esthetic"], warmth: "medium", formality: 0, img: "https://thursdayboots.com/cdn/shop/files/1024x1024-Men-UnionBomberJacket-Black-091925-1_1024x1024.jpg?v=1759347665" },
 
-  { id: "o4", cat: "outer", name: "Windbreaker", color: "blue", style: ["sport", "casual"], warmth: "light", formality: 0, img: "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/AP9675s.jpg?im=Resize,width=750" },
+  { id: "o4", cat: "outer", name: "Windbreaker", color: "blue", style: ["sport", "casual", "outdoor"], warmth: "warm", formality: 0, img: "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/AP9675s.jpg?im=Resize,width=750" },
 
   // Added variety
   { id: "o5", cat: "outer", name: "Denim Jacket", color: "blue", style: ["street", "casual"], warmth: "medium", formality: 0, img: "https://zellbury.com/cdn/shop/files/MJD25008_LIGHT_BLUE_4.jpg?v=1761902520&width=990" },

@@ -4,12 +4,12 @@ import { MANDATORY_CATS, OPTIONAL_CATS } from "../data/wardrobe.js";
 // Helpers
 // ---------------------
 export function satisfiesWeather(item, weather) {
-  
+
   if (!item.warmth) return true;
-  
-  //  Special rule for shoes cus you can wear most shoes in any weather
-  if (item.cat === "shoes" && weather === "cold") {
-    if (item.style?.includes("sport")) return true;
+
+  //  Special rule for sports: physical activity generates heat, so allow sport items in cold
+  if (weather === "cold" && item.style?.includes("sport")) {
+    return true;
   }
   if (weather === 'hot') return item.warmth === 'light';
   if (weather === 'mild') return item.warmth === 'light' || item.warmth === 'medium';
@@ -46,12 +46,26 @@ function muWarmth(weather, warmth) {
 
 // membership: style suitability (0..1)
 function muStyle(event, item) {
-  const eventMap = { casual: ['casual', 'street', 'esthetic'], formal: ['smart', 'classic'], sports: ['sport'] };
+  const eventMap = {
+    casual: ['casual', 'street', 'esthetic', 'outdoor'],
+    formal: ['smart', 'classic'],
+    sports: ['sport']
+  };
   const tags = eventMap[event] || [];
   if (!tags.length) return 0.6;
   if (!item.style?.length) return 0.5;
 
   const hits = item.style.filter(s => tags.includes(s)).length;
+
+  // STRICT MODE for sports: must have "sport" tag, otherwise score very low
+  if (event === 'sports') {
+    if (!item.style.includes('sport')) {
+      return 0.1; // Very low score for non-sport items in sports events
+    }
+    return 1.0; // Perfect match if it has sport tag
+  }
+
+  // For other events, use fuzzy matching
   return clamp01(0.35 + 0.65 * (hits / tags.length));
 }
 
@@ -150,6 +164,11 @@ function generateOutfitsBeam(availableItems, weather, event, maxResults) {
       for (const it of pool) {
         // CSP pruning early for mandatory categories: weather feasibility
         if (MANDATORY_CATS.includes(cat) && it.warmth && !satisfiesWeather(it, weather)) continue;
+
+        // CSP pruning for sports events: mandatory items MUST have "sport" tag
+        if (event === 'sports' && MANDATORY_CATS.includes(cat)) {
+          if (!it.style || !it.style.includes('sport')) continue;
+        }
 
         // prevent duplicates (rare but safe)
         if (state.items.includes(it)) continue;
