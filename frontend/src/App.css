@@ -1,7 +1,7 @@
 :root {
   --primary-gradient: linear-gradient(135deg, #ff6ec7, #7c5cff, #24c6dc);
-  --card-bg: rgba(255,255,255,0.03);
-  --card-hover: rgba(255,255,255,0.06);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-hover: rgba(255, 255, 255, 0.06);
   --btn-bg: linear-gradient(90deg, #ff6ec7, #7c5cff);
   --btn-hover: linear-gradient(90deg, #7c5cff, #24c6dc);
 }
@@ -27,11 +27,11 @@ body {
   background: rgba(255, 255, 255, 0.144);
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 15px 50px rgba(2,6,23,0.7);
+  box-shadow: 0 15px 50px rgba(2, 6, 23, 0.7);
 }
 
 .so-header h1 {
-  
+
   margin-bottom: 6px;
 }
 
@@ -95,7 +95,7 @@ select {
 .wardrobe-item {
   display: flex;
   flex-direction: column;
- 
+
   align-items: center;
   padding: 8px;
   border-radius: 12px;
@@ -106,7 +106,7 @@ select {
 
 .wardrobe-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .wardrobe-item img {
@@ -117,20 +117,22 @@ select {
   margin-bottom: 6px;
 }
 
-.meta{
+.meta {
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .wardrobe-item.active {
   outline: 2px solid rgba(34, 245, 69, 0.692);
 }
 
-.chkbox{
+.chkbox {
   display: none;
 }
+
 .wardrobe-item .name {
   font-weight: 600;
   font-size: 13px;
@@ -162,7 +164,7 @@ select {
 }
 
 .results-panel {
-  
+
   padding: 16px;
   border-radius: 16px;
   background: var(--card-bg);
@@ -190,6 +192,13 @@ select {
   object-fit: cover;
 }
 
+.best-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Ensure left alignment */
+}
+
 .big-score {
   font-size: 30px;
   font-weight: 800;
@@ -211,6 +220,25 @@ select {
   transform: translateY(-2px);
 }
 
+.ask-ai {
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: none;
+  background: #d946ef;
+  margin: 8px 0px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  
+  transition: background 0.25s, transform 0.2s;
+}
+
+.ask-ai:hover {
+  background: #c026d3;
+  transform: translateY(-2px);
+}
+
 .top-list {
   display: flex;
   flex-direction: column;
@@ -223,13 +251,13 @@ select {
   align-items: center;
   padding: 12px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .outfit-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .outfit-images {
@@ -256,6 +284,7 @@ select {
   .layout {
     grid-template-columns: 1fr;
   }
+
   .wardrobe-grid {
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }

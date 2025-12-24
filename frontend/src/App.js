@@ -27,11 +27,12 @@ export default function App() {
     const topScore = ranked[0]?.score ?? 0;
     const top5 = ranked.slice(0, 5);
     const avgTop5 = top5.length ? Math.round(avg(top5.map(o => o.score)) * 10) / 10 : 0;
-    
+
     setScored(ranked);
     setBest(ranked[0] || null);
     setStats({
-      searchTime: Math.round(t1 - t0), found: results.length, topScore, avgTop5 });
+      searchTime: Math.round(t1 - t0), found: results.length, topScore, avgTop5
+    });
   };
 
   const chooseBest = o => { alert("You picked: " + o.items.map(i => i.name).join(' + ')); };
@@ -39,9 +40,9 @@ export default function App() {
 
 
 
-    return (
+  return (
     <>
-     
+
       <div className="app-wrap">
         <div className="card">
           <Header />
@@ -51,13 +52,13 @@ export default function App() {
               eventType={eventType} setEventType={setEventType}
               selectedIds={selectedIds} toggleItem={toggleItem} run={runSearch} />
             <div className="results-area">
-              <ResultsPanel scored={scored} best={best} onChooseBest={chooseBest} />
+              <ResultsPanel scored={scored} best={best} onChooseBest={chooseBest} weather={weather} eventType={eventType} />
               <div className="footer-stats">
                 <div>Items available: <strong>{initial.count}</strong></div>
                 <div>Search time: <strong>{stats.searchTime}ms</strong></div>
-                  <div>Found: <strong>{stats.found}</strong></div>
-                  <div>Top score: <strong>{stats.topScore}</strong></div>
-                  <div>Avg Top-5: <strong>{stats.avgTop5}</strong></div>
+                <div>Found: <strong>{stats.found}</strong></div>
+                <div>Top score: <strong>{stats.topScore}</strong></div>
+                <div>Avg Top-5: <strong>{stats.avgTop5}</strong></div>
 
               </div>
             </div>

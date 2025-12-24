@@ -264,3 +264,53 @@ export function rankOutfits(results, weather, event) {
   scored.sort((a, b) => b.score - a.score || a.time - b.time);
   return scored;
 }
+// ---------------------
+// AI Backend Integration
+// ---------------------
+export async function fetchAIScore(items, weather, event) {
+  try {
+    // 1. Construct payload matching the training data structure
+    const getStyle = (item) => item?.style?.[0] || 'none';
+    const top = items.find(i => i.cat === 'top') || {};
+    const bottom = items.find(i => i.cat === 'bottom') || {};
+    const shoes = items.find(i => i.cat === 'shoes') || {};
+    const outer = items.find(i => i.cat === 'outer'); // Optional
+
+    const payload = {
+      weather,
+      event,
+      top_color: top.color || 'none',
+      top_substyle: getStyle(top),
+      top_warmth: top.warmth || 'none',
+      top_formality: top.formality || 0,
+      bottom_color: bottom.color || 'none',
+      bottom_substyle: getStyle(bottom),
+      bottom_warmth: bottom.warmth || 'none',
+      bottom_formality: bottom.formality || 0,
+      shoes_color: shoes.color || 'none',
+      shoes_substyle: getStyle(shoes),
+      shoes_warmth: shoes.warmth || 'none',
+      shoes_formality: shoes.formality || 0,
+      outer_color: outer ? outer.color : 'none',
+      outer_substyle: outer ? getStyle(outer) : 'none',
+      outer_warmth: outer ? outer.warmth : 'none',
+      outer_formality: outer ? outer.formality : 0,
+    };
+
+    // 2. Call Flask API
+    const response = await fetch('http://localhost:5000/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) throw new Error('AI Backend Error');
+
+    const data = await response.json();
+    return data.score;
+
+  } catch (error) {
+    console.error("AI Fetch Error:", error);
+    return null;
+  }
+}

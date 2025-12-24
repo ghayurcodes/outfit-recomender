@@ -1,52 +1,54 @@
-# Outfit Recommender System
+# Outfit Recommender AI
 
-A smart wardrobe assistant that suggests the best outfit based on weather, event type, and fuzzy style matching.
+## 🚀 How to Run the Project
 
-## 🚀 How It Works
+This project uses a **Python Backend** (for AI) and a **React Frontend** (for UI). You need to run both in separate terminals.
 
-This project uses a **Hybrid Algorithm** combining three advanced concepts to recommend outfits:
+### 1. Start the Backend (AI Server)
+The backend runs on port `5000`.
+1. Open a terminal.
+2. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
+3. Run the server:
+   ```bash
+   python app.py
+   ```
+   *(You should see "Running on http://127.0.0.1:5000")*
 
-### 1. Constraint Satisfaction Problem (CSP)
-**"The Guardrails"**
-Before making ANY suggestion, the system filters out invalid combinations:
-*   **Mandatory Items**: Every outfit must have a Top, Bottom, and Shoes.
-*   **Safety Rules**:
-    *   No "warm" clothes in **Hot** weather.
-    *   **Exception**: You CAN wear sport clothes in cold weather (since you generate heat!).
-    *   **Sports Event**: You MUST wear items tagged as `sport` (e.g., no formal shoes on the field).
-
-### 2. Beam Search Generator
-**"The Engine"**
-Instead of checking millions of random combinations (slow), the app builds outfits step-by-step:
-1.  Picks the best Tops.
-2.  Tries matching Bottoms to those tops.
-3.  Adds Shoes, then Outerwear.
-*   At each step, it only keeps the top 50-100 best partial combinations ("beams"), making the app instant even with large wardrobes.
-
-### 3. Fuzzy Logic Scoring
-**"The Stylist"**
-It doesn't just say "Yes" or "No". It assigns a score (0-100) based on how *well* things fit:
-
-| Factor | How it helps |
-| :--- | :--- |
-| **Style Match** | Does the item fit the vibe? (e.g., "Casual" looks for `casual`, `street`, `outdoor` tags). |
-| **Weather Fit** | "Medium" warmth is perfect for Mild weather (Score 1.0), but bad for Hot weather (Score 0.1). |
-| **Formality** | Ensures all items have a similar fanciness level (Don't mix a blazer with track pants). |
-| **Color Harmony** | Gives bonus points for matching or complementary colors. |
+### 2. Start the Frontend (React App)
+The frontend runs on port `3000`.
+1. Open a **new** terminal.
+2. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
+3. Start the app:
+   ```bash
+   npm start
+   ```
 
 ---
 
-## 🛠️ Project Structure
+## 🧠 Understanding the Scores
 
-*   `src/data/wardrobe.js`: The database of all your clothes, tags, and images.
-*   `src/utils/outfitUtils.js`: The brain containing the CSP, Beam Search, and Fuzzy Logic code.
-*   `src/components`: React UI components (Header, Controls, Results).
+The app provides two different scores for every outfit. Here is what they mean:
 
-## 🏃‍♂️ Running the Project
+### 1. Alg (Algorithm Score) - "The Rule Book"
+*   **What it is:** A strict calculation based on pre-defined logical rules written in JavaScript.
+*   **How it works:** It acts like a checklist.
+    *   *Is the weather Cold?* AND *Is the top Warm?* -> **+ Points**.
+    *   *Is the event Formal?* AND *Are you wearing Sneakers?* -> **- Points**.
+    *   *Do the colors match?* -> **+ Points**.
+*   **Basis:** 100% Logic and Rules.
 
-In the project directory, you can run:
+### 2. AI (Artificial Intelligence) - "The Intuition"
+*   **What it is:** A prediction made by a **Neural Network** (Machine Learning model).
+*   **How it works:** The AI doesn't know the rules explicitly. Instead, it was trained on 5,000 examples of outfits. It "studied" the patterns of what makes an outfit Good or Bad.
+*   **Basis:** Statistics and Pattern Recognition. It looks at the combination of items and guesses, *"Based on what I've learned, I predict this outfit is a 9.2/10".*
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Why are they slightly different?
+*   The **Alg** score is the "Ground Truth" (exact).
+*   The **AI** score is an "Estimate".
+*   If they are close (e.g., Alg: 9.0, AI: 8.9), it means the AI understands your fashion style well!

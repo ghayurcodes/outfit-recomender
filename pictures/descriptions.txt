@@ -1,9 +1,0 @@
-Diagram Descriptions:
-
-1. Semantic Network (semantic_network.png):
-This diagram represents the conceptual relationships between clothing items, categories, and styles using nodes and labeled edges. 
-It shows how an item like a 'White Tee' is-a 'Top' and acts as a visual map of the 'knowledge' the AI uses to understand garment compatibility.
-
-2. Frame Representation (frame_representation.png):
-This diagram illustrates the data structure of the wardrobe items, showing a 'Generic Frame' for clothing and specific 'Instance Frames' for individual pieces.
-Each frame contains 'Slots' (like Type, Color, and Style) filled with 'Values', which is exactly how the wardrobe.js data is organized for the AI reasoning engine.
