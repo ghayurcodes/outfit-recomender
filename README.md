@@ -1,33 +1,89 @@
 # Outfit Recommender AI
 
+An AI-powered outfit recommendation system that combines rule-based algorithms with machine learning to score and suggest outfits based on weather, occasion, and style preferences.
+
 ## 🚀 How to Run the Project
 
-This project uses a **Python Backend** (for AI) and a **React Frontend** (for UI). You need to run both in separate terminals.
+This project uses a **Python Backend** (Flask + scikit-learn) and a **React Frontend**. Follow these steps to set up and run both servers.
 
-### 1. Start the Backend (AI Server)
-The backend runs on port `5000`.
-1. Open a terminal.
-2. Navigate to the backend folder:
-   ```bash
-   cd backend
-   ```
-3. Run the server:
-   ```bash
-   python app.py
-   ```
-   *(You should see "Running on http://127.0.0.1:5000")*
+### Prerequisites
+- Python 3.8 or higher
+- Node.js and npm
+- Git (to clone the repository)
 
-### 2. Start the Frontend (React App)
-The frontend runs on port `3000`.
-1. Open a **new** terminal.
-2. Navigate to the frontend folder:
-   ```bash
-   cd frontend
-   ```
-3. Start the app:
-   ```bash
-   npm start
-   ```
+### Installation Steps
+
+#### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd outfit-recomender
+```
+
+#### 2. Set Up Python Backend
+
+**Navigate to the backend folder:**
+```bash
+cd backend
+```
+
+**Create a virtual environment:**
+```bash
+# On Windows
+python -m venv ../.venv
+
+# On macOS/Linux
+python3 -m venv ../.venv
+```
+
+**Activate the virtual environment:**
+```bash
+# On Windows (PowerShell)
+../.venv/Scripts/Activate.ps1
+
+# On Windows (Command Prompt)
+../.venv\Scripts\activate.bat
+
+# On macOS/Linux
+source ../.venv/bin/activate
+```
+
+**Install Python dependencies:**
+```bash
+pip install -r requirements.txt
+```
+
+**Start the backend server:**
+```bash
+python app.py
+```
+You should see: `* Running on http://127.0.0.1:5000`
+
+*Note: The trained model (`outfit_model.pkl`) is included in the repository. If you need to retrain it, run `python train_model.py` first.*
+
+#### 3. Set Up React Frontend
+
+**Open a NEW terminal** and navigate to the frontend folder:
+```bash
+cd frontend
+```
+
+**Install Node dependencies:**
+```bash
+npm install
+```
+
+**Start the development server:**
+```bash
+npm start
+```
+The app will automatically open in your browser at `http://localhost:3000`
+
+### Running the Application
+
+1. **Backend:** http://127.0.0.1:5000 (must be running)
+2. **Frontend:** http://localhost:3000 (connects to backend)
+
+Both servers must be running simultaneously for the app to work properly.
 
 ---
 
