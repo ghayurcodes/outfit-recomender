@@ -1,4 +1,4 @@
-# Project Report: outfit-recomender
+# Project Report: Outfit Recommender
 
 ## 1. Project Scope & Vision
 The core idea behind this project was to tackle a common daily problem: *decision fatigue* when choosing what to wear. We often have a closet full of clothes but struggle to put them together in a way that matches the weather, the occasion, and general color coordination.

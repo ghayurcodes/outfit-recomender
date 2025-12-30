@@ -3,7 +3,7 @@ import { MANDATORY_CATS, OPTIONAL_CATS } from "../data/wardrobe.js";
 // ---------------------
 // Helpers
 // ---------------------
-export function satisfiesWeather(item, weather) {
+export function satisfiesWeather(item, weather) { //csp
 
   if (!item.warmth) return true;
 
